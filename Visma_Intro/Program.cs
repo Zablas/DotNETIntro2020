@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Visma_Intro
 {
@@ -35,6 +33,7 @@ namespace Visma_Intro
                             AddNewContact(inputData);
                             break;
                         case 3:
+                            DeleteContact(inputData);
                             break;
                         case 4:
                             UpdateContact(inputData);
@@ -183,6 +182,26 @@ namespace Visma_Intro
         }
 
         /// <summary>
+        /// Deletes a single contact according to its phone number
+        /// </summary>
+        /// <param name="toUpdate">The Dictionary to be updated</param>
+        static void DeleteContact(Dictionary<string, Contact> toUpdate)
+        {
+            Console.Write("\nEnter the phone number of the contact You want to delete: ");
+            string phone = Console.ReadLine();
+            try
+            {
+                if (toUpdate.Remove(phone)) Console.WriteLine("Contact deleted successfully.");
+                else Console.WriteLine("No contact with such phone number found.");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error while deleting a contact.");
+            }
+            Console.WriteLine();
+        }
+
+        /// <summary>
         /// Updates a single contact according to its phone number
         /// </summary>
         /// <param name="toUpdate">The Dictionary to be updated</param>
@@ -193,9 +212,16 @@ namespace Visma_Intro
             try
             {
                 var newContact = MakeNewContact();
-                if (toUpdate.Remove(phone))
-                    toUpdate.Add(newContact.Key, newContact.Value);
-                else Console.WriteLine("No contact with such phone number found.");
+                if(!toUpdate.ContainsKey(newContact.Key))
+                {
+                    if (toUpdate.Remove(phone))
+                    {
+                        toUpdate.Add(newContact.Key, newContact.Value);
+                        Console.WriteLine("Contact updated successfully.");
+                    }
+                    else Console.WriteLine("No contact with such phone number found.");
+                }
+                else Console.WriteLine("Contact with such phone number is already registered.");
             }
             catch(Exception)
             {

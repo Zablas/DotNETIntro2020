@@ -32,6 +32,7 @@ namespace Visma_Intro
                             PrintAllContacts(inputData);
                             break;
                         case 2:
+                            AddNewContact(inputData);
                             break;
                         case 3:
                             break;
@@ -142,6 +143,32 @@ namespace Visma_Intro
                     writer.WriteLine($"{kvp.Value.ToString()}, {kvp.Key}");
                 }
             }
+        }
+
+        /// <summary>
+        /// Adds a new contact to the dictionary
+        /// </summary>
+        /// <param name="toUpdate">Dictionary to which a new contact is added</param>
+        static void AddNewContact(Dictionary<string, Contact> toUpdate)
+        {
+            Console.WriteLine("\nPlease fill out the information about the new contact.");
+            Console.Write("First name: ");
+            string fName = Console.ReadLine();
+            Console.Write("Last name: ");
+            string lName = Console.ReadLine();
+            Console.Write("Address: ");
+            string address = Console.ReadLine();
+            Console.Write("Phone number: ");
+            string phone = Console.ReadLine();
+            try
+            {
+                toUpdate.Add(phone, new Contact(fName, lName, address));
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Error adding a new contact. Possibly a duplicate phone number?");
+            }
+            Console.WriteLine();
         }
     }
 }

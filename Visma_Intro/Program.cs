@@ -37,6 +37,7 @@ namespace Visma_Intro
                         case 3:
                             break;
                         case 4:
+                            UpdateContact(inputData);
                             break;
                     }
                 }
@@ -151,6 +152,24 @@ namespace Visma_Intro
         /// <param name="toUpdate">Dictionary to which a new contact is added</param>
         static void AddNewContact(Dictionary<string, Contact> toUpdate)
         {
+            var contact = MakeNewContact();
+            try
+            {
+                toUpdate.Add(contact.Key, contact.Value);
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Error adding a new contact. Possibly a duplicate phone number?");
+            }
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Creates a new contact
+        /// </summary>
+        /// <returns>Returns a KeyValuePair<K, V> where the key is a phone number and value is a contact</returns>
+        static KeyValuePair<string, Contact> MakeNewContact()
+        {
             Console.WriteLine("\nPlease fill out the information about the new contact.");
             Console.Write("First name: ");
             string fName = Console.ReadLine();
@@ -160,13 +179,27 @@ namespace Visma_Intro
             string address = Console.ReadLine();
             Console.Write("Phone number: ");
             string phone = Console.ReadLine();
+            return new KeyValuePair<string, Contact>(phone, new Contact(fName, lName, address));
+        }
+
+        /// <summary>
+        /// Updates a single contact according to its phone number
+        /// </summary>
+        /// <param name="toUpdate">The Dictionary to be updated</param>
+        static void UpdateContact(Dictionary<string, Contact> toUpdate)
+        {
+            Console.Write("\nEnter the phone number of the contact You want to update: ");
+            string phone = Console.ReadLine();
             try
             {
-                toUpdate.Add(phone, new Contact(fName, lName, address));
+                var newContact = MakeNewContact();
+                if (toUpdate.Remove(phone))
+                    toUpdate.Add(newContact.Key, newContact.Value);
+                else Console.WriteLine("No contact with such phone number found.");
             }
             catch(Exception)
             {
-                Console.WriteLine("Error adding a new contact. Possibly a duplicate phone number?");
+                Console.WriteLine("Error while updating a contact.");
             }
             Console.WriteLine();
         }

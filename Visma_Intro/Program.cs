@@ -12,7 +12,35 @@ namespace Visma_Intro
         static void Main(string[] args)
         {
             Dictionary<string, Contact> inputData = ReadInputData("in.txt");
-            
+            int choiceNumber = -1;
+            while (choiceNumber != 0)
+            {
+                Console.WriteLine("1. Log out all contacts");
+                Console.WriteLine("2. Add a new contact");
+                Console.WriteLine("3. Delete a contact");
+                Console.WriteLine("4. Update a contact");
+                Console.WriteLine("0. Exit the application\n");
+                Console.Write("Choose an option: ");
+                try
+                {
+                    choiceNumber = int.Parse(Console.ReadLine());
+                    switch(choiceNumber)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Keyboard input format not recognized.");
+                }
+            }
         }
 
         /// <summary>

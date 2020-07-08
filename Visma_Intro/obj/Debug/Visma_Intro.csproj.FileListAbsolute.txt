@@ -1,0 +1,6 @@
+C:\Users\Karolis\Documents\Visma\DotNETIntro2020\Visma_Intro\bin\Debug\Visma_Intro.exe.config
+C:\Users\Karolis\Documents\Visma\DotNETIntro2020\Visma_Intro\bin\Debug\Visma_Intro.exe
+C:\Users\Karolis\Documents\Visma\DotNETIntro2020\Visma_Intro\bin\Debug\Visma_Intro.pdb
+C:\Users\Karolis\Documents\Visma\DotNETIntro2020\Visma_Intro\obj\Debug\Visma_Intro.csprojAssemblyReference.cache
+C:\Users\Karolis\Documents\Visma\DotNETIntro2020\Visma_Intro\obj\Debug\Visma_Intro.exe
+C:\Users\Karolis\Documents\Visma\DotNETIntro2020\Visma_Intro\obj\Debug\Visma_Intro.pdb

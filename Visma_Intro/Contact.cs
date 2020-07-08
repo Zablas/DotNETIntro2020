@@ -14,5 +14,6 @@
             LastName = lName;
             Address = address;
         }
+        public override string ToString() => $"{FirstName}, {LastName}, {Address}";
     }
 }

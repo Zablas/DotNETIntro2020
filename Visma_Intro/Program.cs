@@ -10,6 +10,7 @@ namespace Visma_Intro
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8; // We might be dealing with characters from a broader encoding
+            Console.WriteLine("-- Contact Manager --");
             Dictionary<string, Contact> inputData = ReadInputData("in.txt");
 
             int choiceNumber = -1;
@@ -19,6 +20,7 @@ namespace Visma_Intro
                 Console.WriteLine("2. Add a new contact");
                 Console.WriteLine("3. Delete a contact");
                 Console.WriteLine("4. Update a contact");
+                Console.WriteLine("5. Help");
                 Console.WriteLine("0. Exit the application\n");
                 Console.Write("Choose an option: ");
                 try
@@ -37,6 +39,9 @@ namespace Visma_Intro
                             break;
                         case 4:
                             UpdateContact(inputData);
+                            break;
+                        case 5:
+                            DisplayHelp();
                             break;
                     }
                 }
@@ -212,7 +217,7 @@ namespace Visma_Intro
             try
             {
                 var newContact = MakeNewContact();
-                if(!toUpdate.ContainsKey(newContact.Key))
+                if(!toUpdate.ContainsKey(newContact.Key)) // In order to not remove a contact prematurely
                 {
                     if (toUpdate.Remove(phone))
                     {
@@ -228,6 +233,17 @@ namespace Visma_Intro
                 Console.WriteLine("Error while updating a contact.");
             }
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Displays all the needed information about the program
+        /// </summary>
+        static void DisplayHelp()
+        {
+            Console.WriteLine("\nInstructions:");
+            Console.WriteLine("* The input is stored in a file named \"in.txt\"");
+            Console.WriteLine("* Each value in a single row is separated by a semicolon (;)");
+            Console.WriteLine("* The program is navigated by typing out the number of Your choice and pressing Enter\n");
         }
     }
 }

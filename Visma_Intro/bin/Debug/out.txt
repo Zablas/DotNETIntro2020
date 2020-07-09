@@ -1,4 +1,1 @@
 ﻿First name, Last name, Address, Phone
-Karolis, Balčiūnas, Guobu g., 666666
-Karolis, Balčiūnas, Guobu g., 666566
-2, f, f, 333
